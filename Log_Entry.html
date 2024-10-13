@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    margin:0px;
+    padding:0px;
+}
+body{
+    background-color:rgb(178, 152, 176);
+}
+#container{
+    width:50%;
+    padding:20px;
+    background-color:rgb(165, 107, 107);
+    margin:auto;
+    border-radius:20px;
+}
+h1{
+    text-align:center;
+}
+button{
+    padding:10px;
+    width:100px;
+    margin-top:1%;
+    margin-left:45%;
+    margin-right:45%;
+    border-radius:5px;
+    background-color:coral;
+}
+.logentry{
+    margin-bottom:10px;
+    padding:20px;
+    border-left:6px solid red;
+    background-color:rgb(254, 134, 248);
+    border-top-right-radius: 30px;
+    border-bottom-right-radius:30px;
+    font-size:20px;
+}
+#space{
+    padding:20px;
+}
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Log Entries</h1>
+        <button>Log</button>
+        <div id="space"></div>
+        <div id="logcontainer"></div>
+    </div>
+    <script>
+        let btn=document.querySelector("button");
+        btn.onclick=()=>{
+            let logcontainer=document.querySelector("#logcontainer");
+            let logentry=document.createElement("div");
+            logentry.className="logentry";
+            let now=new Date();
+            let formattedDate=now.toLocaleString();
+            logentry.textContent="Log At "+formattedDate;
+            logcontainer.appendChild(logentry);
+        }
+    </script>
+</body>
+</html>

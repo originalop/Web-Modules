@@ -1,0 +1,66 @@
+<html>
+  <head>
+    <style>
+      div{
+        margin:auto;
+        background-color: skyblue;
+        height: 40%;
+        width:auto;
+        border-radius:10%;
+        padding:5px 5px 10px 5px;
+      }
+      h1{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+    <h1>12<sup>th</sup> Subjects</h1>
+    <input type="checkbox" id="SelectCheckBox"><b><label>Select compulsory subject</label></b></b><br>
+    
+    
+        <input type="checkbox" name="Sub" value="Chemistry"><label>Chemistry</label><br>
+        
+        
+    <input type="checkbox" name="Sub" value="Physics"><label>Physics</label><br>
+    
+    
+    <input type="checkbox" name="Sub" value="Maths"><label>Maths</label><br>
+    
+    
+    <input type="checkbox" name="Sub" value="Marathi"><label>Marathi</label><br>
+    
+    
+    <input type="checkbox" name="Sub" value="English"><label>English</label><br>
+    
+    
+    <input type="checkbox" name="Sub" value="Geography"><label>Geography</label><br>
+    
+    </div>
+    <script>
+      //Access the ParentCheckBox
+      let ParentCheckBox=document.querySelector("#SelectCheckBox");
+      // onclick event
+      ParentCheckBox.onclick=()=>
+      {
+        let ParentCheckBox=document.querySelector("#SelectCheckBox");
+        //Access array of named sub
+        let ChildCheckboxArr=document.querySelectorAll("input[name='Sub']");
+        
+        if(ParentCheckBox.checked)
+        {
+          ChildCheckboxArr.forEach((index)=>{
+          index.checked=true;
+          });
+        }
+        else
+        {
+          ChildCheckboxArr.forEach((index)=>{
+          index.checked=false;
+          });
+        }
+      };
+    </script>
+  </body>
+</html>

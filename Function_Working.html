@@ -1,0 +1,61 @@
+<html>
+  <head>
+    <style>
+      button{
+        background-color: blue;
+        color:white;
+        border-radius:10px;
+        align-items: centet;
+        width:60%;
+        height:50px;
+      }
+      #div{
+        background-color:skyblue;
+        border-radius:10px;
+        text-align: center;
+        height:500px;
+        width:100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="div">
+    <h1>Hello India</h1>
+    <h2>Hello USA</h2>
+    <button onclick="h1()">Remove India</button><br><br>
+    <button onclick="h2()">Remove USA</button><br><br>
+    <button onclick="remove()">Remove All</button><br><br>
+    <button onclick="lightme()">Light Me</button><br><br>
+    <button onclick="dark()">Dark Mode</button>
+    </div>
+    <script>
+      const h1=()=>{
+        let h1=document.querySelector("h1");
+        h1.remove();
+      }
+      const h2=()=>{
+        let h2=document.querySelector("h2");
+        h2.remove();
+      }
+      //Remove All portion.
+      /*const remove=()=>{
+        let btn=document.querySelectorAll("#div");
+        btn.forEach(btn=>(btn).remove());
+      }*/
+      const remove = () => {
+  let children = document.querySelector("#div").children;
+  Array.from(children).forEach(child => child.remove());
+}
+      //Light Me! portion
+      const lightme=()=>{
+        let h2=document.querySelector("#div");
+        h2.style.backgroundColor="pink";
+      }
+      //Dark Mode portion.
+      const dark=()=>{
+        let body=document.querySelector("body");
+        body.style.backgroundColor="black";
+      }
+    </script>
+  </body>
+</html>
