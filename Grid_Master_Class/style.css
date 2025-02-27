@@ -1,0 +1,28 @@
+.box {
+    color: white;
+    padding: 20px;
+    font-size: 18px;
+    text-align: center;
+    background-color: #3498db;
+}
+.box:nth-child(even) {
+    background-color: #e74c3c;
+}
+.container {
+    background-color: #fff;
+    border: 2px solid #333;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+.grid-container {
+    display: grid;
+    gap: 10px;
+    background-color: #ddd;
+    padding: 10px;
+    margin-bottom: 30px;
+    grid-template-columns: repeat(3,auto);
+    grid-template-rows: repeat(2,auto);
+    /* place-items: center; */
+    /* align-self: center; */
+
+}
