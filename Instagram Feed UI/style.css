@@ -1,0 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin-left: 5px;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(41, 7, 235, 1) 35%, rgba(0, 212, 255, 1) 100%);
+}
+
+.container {
+    height: 500px;
+    width: 500px;
+    position: relative;
+    /* border: 2px solid red; */
+}
+
+.album {
+    height: 500px;
+    width: 500px;
+    margin-top: 40px;
+}
+
+.album img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    margin-bottom: 50px;
+    border: 2px solid red;
+}
+
+#verticalDots {
+    /* margin-right: 0; */
+    /* align-items: end; */
+    position: absolute;
+    right: 0;
+    /* top: 10px; */
+    /* margin-bottom: 20px; */
+    top: -30px;
+}
+
+.fa-heart,
+.fa-share,
+.fa-comment {
+    padding: 20px;
+    margin-top: 10px;
+    /* border-radius: 20px; */
+}
+
+.listTabs {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    /* justify-content: center; */
+    margin-top: 5px;
+}
+
+.listTabs .listTabsBtn {
+    border-radius: 20px;
+    padding-right: 20px;
+    /* background: #000; */
+    /* display: fl; */
+    /* align-items: center; */
+    /* text-align: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.listTabs .listTabsBtn, #verticalDots:hover{
+    cursor: pointer;
+}
