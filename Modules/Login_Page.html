@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <style>
+    /* ... other styles ... */
+#links {
+    display: flex;
+    justify-content: space-between;
+}
+        body
+        {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container
+        {
+            background-color:#fff;
+            padding: 50px;
+            border-radius: 50px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border: 1px dotted red;
+        }
+        input[type="text"], input[type="password"]
+        {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid blue;
+            border-radius: 50px;
+        }
+        input[type="submit"]
+        {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 50px;
+            background-color: #5cb85c;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover
+        {
+            background-color: #4cae4c;
+        }
+        #LoginText
+        {
+          text-align:center;
+        }
+        #GoogleLogo
+        {
+          display:block;
+          margin:0 auto;
+          width:50px;
+          height:auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+      <img id="GoogleLogo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAvIdgxHfjY_nIpdlS2pgF1dfH3-j1MRV0it-ENrD-sWN87BNsOn4krURE&s=10" alt="Google Logo">
+        <h1 id="LoginText">Login</h1>
+        <form name="loginForm" action="/login" method="post" onsubmit="return validateForm()">
+            <input type="text" name="username" placeholder="Username" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <div id="links">
+            <a class="forgot-password" href="https://accounts.google.com/v3/signin/challenge/pwd?TL=AC3PFD5irH2NPEO1mCK4pRN1tuU1PJdREWPbN5c7QpYjnX-fHmgu6-TjJCon6Abk&cid=1&continue=https://myaccount.google.com/signinoptions/password&flowName=GlifWebSignIn&hl=en_US&ifkv=AS5LTATBRlaoC3o-ktm67FZPyW_b5VVh19UGXacQE3caWAbTpXv5NypbEl0uivAluAAejb1Nrcs1&kdi=CAM&rart=ANgoxcfxSWVxxFHZBEDLlEMysLo16FG50veHbsSnz5i2Jccg5MGcuUDXzoUgf80jjwmFj8hQwiuZsd6p-hTpFPOIQ3BizQ2PotIp5z57FsmrO8AFZJNEW-0&rpbg=1&sarp=1&scc=1&service=accountsettings">Forgot Password?</a>
+            <a href="https://support.google.com/accounts/answer/41078?hl=en&co=GENIE.Platform%3DDesktop">Help!</a>
+            </div>
+            <input type="submit" value="Login">
+        </form>
+    </div>
+    <script>
+        function validateForm()
+        {
+            var username = document.forms["loginForm"]["username"].value;
+            var password = document.forms["loginForm"]["password"].value;
+            if (username == "admin" || password == "P@ssword2024")
+            {
+              window.location.href='https://www.google.com/';
+            }
+            else
+            {
+              alert("Invalid credential")
+            }
+        }
+    </script>
+</body>
+</html>

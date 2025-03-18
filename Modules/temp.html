@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Dynamic Table</title>
+  </head>
+  <body
+    class="flex flex-col items-center justify-center min-h-screen bg-gray-100"
+  >
+    <button
+      id="showTable"
+      class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-700"
+    >
+      Show Table
+    </button>
+
+    <div id="tableContainer" class="mt-5 hidden">
+      <table class="border-collapse border border-gray-400 w-full bg-white">
+        <thead>
+          <tr class="bg-gray-200">
+            <th class="border border-gray-400 px-4 py-2">Name</th>
+            <th class="border border-gray-400 px-4 py-2">Address</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+      document
+        .getElementById("showTable")
+        .addEventListener("click", function () {
+          const data = [
+            { name: "John Doe", address: "123 Main St" },
+            { name: "Jane Smith", address: "456 Oak Ave" },
+            { name: "Alice Johnson", address: "789 Pine Rd" },
+          ];
+
+          const tableBody = document.getElementById("tableBody");
+          tableBody.innerHTML = "";
+
+          data.forEach((person) => {
+            const row = `<tr>
+                      <td class="border border-gray-400 px-4 py-2">${person.name}</td>
+                      <td class="border border-gray-400 px-4 py-2">${person.address}</td>
+                    </tr>`;
+            tableBody.innerHTML += row;
+          });
+
+          document.getElementById("tableContainer").classList.remove("hidden");
+        });
+    </script>
+  </body>
+</html>

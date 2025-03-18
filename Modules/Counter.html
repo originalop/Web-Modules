@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <title>Counter</title>
+    <style>
+      .inc{
+        background-color:skyblue;
+        height:100px;
+        width: 100px;
+        border-radius:50px;
+        border:3px dotted red;
+        font-size: 50px;
+      }
+      #DarkMode{
+        background-color:skyblue;
+        height:100px;
+        width: 100px;
+        border-radius:50px;
+        border:3px dotted red;
+        font-size: 30px;
+      }
+      #DisplayDiv{
+        height:10%;
+        width:100%;
+        border:1px solid black;
+        border-radius:50px;
+        background-color:orange;
+        font-size: 70px;
+      }
+      #ButtonDiv{
+        display: flex;
+        justify-content: center;
+        justify-content: space-evenly;
+      }
+      #Photo{
+        display:block;
+          margin:0 auto;
+          width:auto;
+          height:auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img id="Photo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT99rt2_vgiLN_843hRYjXV7GnfjQCxbSkcQJrps85G-Zh3MFTS5esYIC00&s=10" alt="Krishna">
+    <input id="DisplayDiv" placeholder="0" readonly>
+    <div id="ButtonDiv">
+    <button class="inc" onclick="addition()">+</button>
+    <button class="inc" onclick="subtraction()">-</button>
+    <button id="DarkMode" onclick="DarkMode()">Dark Mode</button>
+    </div>
+    </div>
+    <script>
+      let count=0;
+      //Addition portion.
+      const addition=()=>{
+        count++;
+        display();
+      }
+      //Subtraction portion.
+      const subtraction=()=>{
+        count--;
+        display();
+      }
+      //Display function.
+      const display=()=>{
+        document.querySelector("#DisplayDiv").value=count;
+      }
+      //Dark Mode portion.
+      const DarkMode=()=>{
+        document.querySelector("body").style.backgroundColor="black";
+      }
+    </script>
+  </body>
+</html>

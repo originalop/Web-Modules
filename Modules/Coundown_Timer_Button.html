@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+    margin:auto;
+    width:500px;
+    text-align: center;
+    }
+    button{
+        padding:10px;
+        border-radius:10px;
+        background-color:rgb(29, 251, 192);
+        font-size:30px;
+        height: 200px;
+        width:400px;
+    }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <button>Start Countdown Timer</button>
+    </div>
+    <script>
+        let CountdownTimer;//Hold setInterval ID
+let btn=document.querySelector("button");
+btn.onclick=()=>{
+    if(CountdownTimer)
+        clearInterval(CountdownTimer);
+    let timeleft=prompt("Enter Time in Seconds:");//set initial value
+    document.querySelector("button").textContent=timeleft;
+    CountdownTimer=setInterval(()=>{
+        timeleft--;
+        document.querySelector("button").textContent=timeleft;
+        if(timeleft<0)
+        {
+            document.querySelector("button").textContent="Time Up Mr.Rakesh!";
+            clearInterval(CountdownTimer);
+        }
+    },1000)
+
+}
+    </script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mess Module</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+     <style>
+        * {
+    padding: 0;
+    margin: 0;
+}
+body {
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    color: white;
+}
+#month, #buttonAndInputField, #displayPriceAndPhoneNumber, #category {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#checkBillButton {
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: #23ec62;
+    font-weight: bolder;
+    color: rgb(238, 53, 53);
+}
+/* Centering logo for better view */
+#logo {
+    text-align: center;
+    color: red;
+    background-color: yellow;
+    margin-bottom: 10px;
+}
+span {
+    background-color: rgb(0, 217, 255);
+    border-radius: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+input[type="checkbox"] {
+    height: 30px;
+    width: 30px;
+}
+#payHere {
+    background-color: red;
+    border-top-right-radius:100px;
+    border-bottom-right-radius:100px;
+}
+#container {
+        border: 50px solid yellow;
+}
+     </style>
+</head>
+<body>
+    <h1 id="logo"><span id="nameSpan">Jadhav Mess</span></h1>
+    <div id="container">
+    <div id="category">
+        <input type="checkbox" name="" id="c2"><label for="c2">2 chapatti</label><br>
+        <input type="checkbox" name="" id="c3"><label for="c3">3 chpatti</label><br>
+        <input type="checkbox" name="" id="c4"><label for="c4">4 chapatti</label><br>
+    </div><hr>
+    <div id="month">
+        <h3 id="displayMonthNumber">2</h3>
+        <h4 id="displayMonthName">Feb</h4>
+        <input type="range" name="" id="range" step="1" min="1" max="12" value="2">
+        <p id="chooserange">Choose Month</p>
+    </div><hr>
+    <div id="buttonAndInputField">
+        <label for="enterDayOff">Enter day off: </label><input type="number" name="" id="enterDayOff" placeholder="Enter day off">
+        <label for="enterExtraResource">Enter extra resource: </label><input type="number" name="" id="enterExtraResource" placeholder="Enter entra resource">
+        <button id="checkBillButton">Check Bill</button>
+    </div><hr>
+    <div id="displayPriceAndPhoneNumber">
+        <h1 id="dispalyAmount"></h1>
+        <span id="nameSpan"><h2 id="displayPhoneNumber"><span id="payHere">Pay Here:</span> 8600 8202 38</h2></span>
+    </div>
+    </div>
+    <!-- <script src="script.js"></script> -->
+     <script>
+        let c2=document.querySelector("#c2");// 2 chappati
+let c3=document.querySelector("#c3");// 3 chapatti
+let c4=document.querySelector("#c4");// 4 chapatti
+let displayMonthNumber=document.querySelector("#displayMonthNumber");// Access month number like 1, 2, 3, 4...12
+let displayMonthName = document.querySelector("#displayMonthName");// Access month name like Jan, Feb, Mar.... Dec
+let rangeSlider=document.querySelector("#range");// Accessed range slider
+let dayOff=document.querySelector("#enterDayOff");// Accessed day off
+let checkBillButton=document.querySelector("#checkBillButton");// Accessd button to check bill amount
+let dispalyAmount = document.querySelector("#dispalyAmount");// Accessed display amount section to dispaly amount after it get calculated.
+let displayPhoneNumber = document.querySelector("#displayPhoneNumber");// Accessed phone number section to get display phone number after bit got generated for payment.
+let extraResource = document.querySelector("#enterExtraResource");
+let c2Price=1800;
+let c3Price=2200;
+let c4Price=2600;
+ let date=new Date();
+ let currentYear=date.getFullYear();
+// Range slider. It will display numbert like 1, 2, 3, 4, 5, 6...12
+rangeSlider.addEventListener("input", ()=>{
+    displayMonthNumber.textContent=rangeSlider.value;
+    if(rangeSlider.value==1) {
+        displayMonthName.innerText="Jan";
+    } else if(rangeSlider.value==2) {
+        displayMonthName.innerText = "Feb";
+    } else if(rangeSlider.value==3) {
+        displayMonthName.innerText = "Mar";
+    } else if(rangeSlider.value==4) {
+        displayMonthName.innerText = "Apr";
+    }else if(rangeSlider.value==5) {
+        displayMonthName.innerText = "May";
+    } else if(rangeSlider.value==6) {
+        displayMonthName.innerText = "Jun";
+    } else if(rangeSlider.value==7) {
+        displayMonthName.innerText = "Jul";
+    }else if(rangeSlider.value==8) {
+        displayMonthName.innerText = "Aug";
+    }else if(rangeSlider.value==9) {
+        displayMonthName.innerText = "Sep";
+    }else if(rangeSlider.value==10) {
+        displayMonthName.innerText = "Oct";
+    }else if(rangeSlider.value==11) {
+        displayMonthName.innerText = "Nov";
+    }else {
+        displayMonthName.innerText = "Dec";
+    }
+});
+// Button control
+checkBillButton.addEventListener("click", ()=>{
+    let daysInMonth = getDaysInMonth(currentYear, rangeSlider.value);
+    if(daysInMonth==31) {
+        daysInMonth=30;// Mahesh mess consider 30 days as month not 31. that's why I reduced month days if its exceed 30.
+    } else if(daysInMonth==28 || daysInMonth==29) {
+        daysInMonth=30;
+    }
+    if(c2.checked) {
+        let ppc=c2Price/30;// 'ppc' would hold per plate cost which would around 73.33 INR.
+        let totalAmount=Math.floor((daysInMonth-dayOff.value)*ppc+(extraResource.value*10));// 'totalAmount' variable hold actual days in which we have done meal in mess. It minus day oof from current month.
+        // alert(totalAmount);
+        dispalyAmount.innerText="₹"+totalAmount;
+    } else if(c3.checked) {
+      let ppc = c3Price / 30;
+      let totalAmount = Math.floor((daysInMonth - dayOff.value) * ppc+(extraResource.value*10)); // 'totalAmount' variable hold actual days in which we have done meal in mess. It minus day oof from current month.
+      dispalyAmount.innerText = "₹" + totalAmount;
+    } else if(c4.checked) {
+      let ppc = c4Price / 30; // 'ppc' would hold per plate cost which would around 73.33 INR.
+      let totalAmount = Math.floor((daysInMonth - dayOff.value) * ppc+(extraResource.value*10)); // 'totalAmount' variable hold actual days in which we have done meal in mess. It minus day oof from current month.
+      dispalyAmount.innerText = "₹" + totalAmount;
+
+    }
+});
+//Get date function. Which accept two parameters called 'year' and 'month' and return days in month.
+const getDaysInMonth=(year, month)=> {
+    return new Date(year, month, 0).getDate();
+}
+     </script>
+</body>
+</html>
